@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Siladitta
+ *
+ */
+module designpattern {
+}

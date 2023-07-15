@@ -3,60 +3,45 @@ package com.sc.pattern;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.sc.pattern.singleton.EagerInitializedSingleton;
-import com.sc.pattern.singleton.EnumSingleton;
-import com.sc.pattern.singleton.LazyInitializedSingleton;
-import com.sc.pattern.singleton.StaticBlockSingleton;
-import com.sc.pattern.singleton.ThreadSafeSingleton;
+import com.sc.pattern.singleton.EagerSigleton;
+import com.sc.pattern.singleton.EnumSinglton;
+import com.sc.pattern.singleton.LazyInitializationSigleton;
+import com.sc.pattern.singleton.ThreadSafeLazyInitializationSigleton;
 
 public class EntryPoint {
+
 	public static void main(String[] args) {
-		EagerInitializedSingleton eagerObj1 = EagerInitializedSingleton.getInstance();
-		EagerInitializedSingleton eagerObj2 = EagerInitializedSingleton.getInstance();
+		EagerSigleton eagerObject1 = EagerSigleton.getInstance();
+		EagerSigleton eagerObject2 = EagerSigleton.getInstance();
 
-		System.out.println("Instances HashCode for Object 1 ::" + eagerObj1.hashCode());
-		System.out.println("Instances HashCode for Object 2 ::" + eagerObj2.hashCode());
+		System.out.println("Egaer Object 1::" + eagerObject1.hashCode());
+		System.out.println("Egaer Object 2::" + eagerObject2.hashCode());
 
-		StaticBlockSingleton staticBlockObj1 = StaticBlockSingleton.getInstance();
-		StaticBlockSingleton staticBlockObj2 = StaticBlockSingleton.getInstance();
+		EnumSinglton enumObj = EnumSinglton.INSTANCE;
 
-		System.out.println("Instances HashCode for Object 1 ::" + staticBlockObj1.hashCode());
-		System.out.println("Instances HashCode for Object 2 ::" + staticBlockObj2.hashCode());
+		System.out.println("Enum Object 1::" + enumObj.hashCode());
 
-//		LazyInitializedSingleton lazyBlockObj1 = LazyInitializedSingleton.getInstance();
-//		LazyInitializedSingleton lazyBlockObj2 = LazyInitializedSingleton.getInstance();
+//		LazyInitializationSigleton lazyObject1 = LazyInitializationSigleton.getInstance();
+//		LazyInitializationSigleton lazyObject2 = LazyInitializationSigleton.getInstance();
 //
-//		System.out.println("Instances HashCode for Object 1 ::" + lazyBlockObj1.hashCode());
-//		System.out.println("Instances HashCode for Object 2 ::" + lazyBlockObj2.hashCode());
+//		System.out.println("Lazy Object 1::" + lazyObject1.hashCode());
+//		System.out.println("Lazy Object 2::" + lazyObject2.hashCode());
 
 		ExecutorService service = Executors.newFixedThreadPool(5);
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; ++i) {
 			service.execute(new Runnable() {
 				@Override
 				public void run() {
-					ThreadSafeSingleton threadObj = ThreadSafeSingleton.getInstance();
-					System.out.println("Instances HashCode for multi threaded Object (Thread Safe) ::" + threadObj.hashCode());
-				}
-			});
-		}
+					ThreadSafeLazyInitializationSigleton lazyObject1 = ThreadSafeLazyInitializationSigleton
+							.getInstanceWithDoubleLocking();
 
-		for (int i = 0; i < 5; i++) {
-			service.execute(new Runnable() {
-				@Override
-				public void run() {
-					LazyInitializedSingleton threadObj = LazyInitializedSingleton.getInstance();
-					System.out.println("Instances HashCode for multi threaded Object ::" + threadObj.hashCode());
+					System.out.println("Lazy Object creation using multi thread::" + lazyObject1.hashCode());
+
 				}
 			});
 		}
 
 		service.shutdown();
-		
-		EnumSingleton enumS1 = EnumSingleton.INSTANCE;
-		EnumSingleton enumS2 = EnumSingleton.INSTANCE;
-		System.out.println("Instances HashCode for enum Object ::" + enumS1.hashCode());
-		System.out.println("Instances HashCode for enum Object ::" + enumS2.hashCode());
-		
 	}
 }
