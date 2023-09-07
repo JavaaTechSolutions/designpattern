@@ -1,4 +1,4 @@
-package com.sc.pattern.builder;
+package com.jts.pattern.builder;
 
 public class UserBuilder {
 	public static void main(String[] args) {

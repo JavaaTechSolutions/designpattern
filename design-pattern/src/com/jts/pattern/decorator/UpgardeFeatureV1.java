@@ -1,4 +1,4 @@
-package com.sc.pattern.decorator;
+package com.jts.pattern.decorator;
 
 public class UpgardeFeatureV1 extends CarDecorator {
 

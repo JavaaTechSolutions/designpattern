@@ -1,12 +1,12 @@
-package com.sc.pattern;
+package com.jts.pattern;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.sc.pattern.singleton.EagerSigleton;
-import com.sc.pattern.singleton.EnumSinglton;
-import com.sc.pattern.singleton.LazyInitializationSigleton;
-import com.sc.pattern.singleton.ThreadSafeLazyInitializationSigleton;
+import com.jts.pattern.singleton.EagerSigleton;
+import com.jts.pattern.singleton.EnumSinglton;
+import com.jts.pattern.singleton.LazyInitializationSigleton;
+import com.jts.pattern.singleton.ThreadSafeLazyInitializationSigleton;
 
 public class EntryPoint {
 

@@ -1,4 +1,4 @@
-package com.sc.pattern.prototype;
+package com.jts.pattern.prototype;
 
 import java.util.ArrayList;
 import java.util.List;

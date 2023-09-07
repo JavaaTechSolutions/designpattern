@@ -1,9 +1,9 @@
-package com.sc.pattern;
+package com.jts.pattern;
 
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
 
-import com.sc.pattern.singleton.EagerSigleton;
+import com.jts.pattern.singleton.EagerSigleton;
 
 public class RefelctionSingletonTest {
 

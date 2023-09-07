@@ -1,4 +1,4 @@
-package com.sc.pattern.builder;
+package com.jts.pattern.builder;
 
 public class User {
 	private final String firstName;

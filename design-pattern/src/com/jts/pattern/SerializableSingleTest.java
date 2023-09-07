@@ -1,4 +1,4 @@
-package com.sc.pattern;
+package com.jts.pattern;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
-import com.sc.pattern.singleton.SerilizableSingleton;
+import com.jts.pattern.singleton.SerilizableSingleton;
 
 public class SerializableSingleTest {
 
